@@ -1,0 +1,39 @@
+version: '3.7'
+
+volumes:
+  pg_data:
+    driver: local
+
+networks:
+  application:
+    name: application
+
+services:
+
+  postgresql:
+    image: postgres
+    hostname: postgresql
+    volumes:
+      - pg_data:/var/lib/postgresql/data
+    networks:
+      - application
+    environment:
+      POSTGRES_USER: ${POSTGRES_USERNAME}
+      POSTGRES_PASSWORD: postgres
+    ports:
+      - 5432:5432
+
+  pgadmin4:
+    image: dpage/pgadmin4
+    hostname: pgadmin
+    environment:
+      PGADMIN_DEFAULT_EMAIL: ${PGADMIN_USERNAME}
+      PGADMIN_DEFAULT_PASSWORD: ${PGADMIN_PASSWORD}
+      PGADMIN_LISTEN_PORT: ${PGADMIN_LISTEN_PORT}
+    ports:
+      - ${PGADMIN_LISTEN_PORT}:${PGADMIN_LISTEN_PORT}
+    networks:
+      - application
+    depends_on:
+      - postgresql
+
