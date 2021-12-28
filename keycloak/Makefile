@@ -25,7 +25,7 @@ ps:				## Show all running containers.
 	@docker-compose ${COMPOSE_KC_ALL_FILES} ps
 
 down:			## Down KeyCloak and all its extra components.
-	@docker-compose ${COMPOSE_KC_ALL_FILES} down
+	-@docker-compose ${COMPOSE_KC_ALL_FILES} down
 
 stop:			## Stop KeyCloak and all its extra components.
 	@docker-compose ${COMPOSE_KC_ALL_FILES} stop ${KEYCLOAK_SERVICES}

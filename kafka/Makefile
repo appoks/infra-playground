@@ -25,7 +25,7 @@ ps:			## Show all running containers.
 	@docker-compose ${COMPOSE_KFK_ALL_FILES} ps
 
 down:		## Down Kafka and all its extra components.
-	@docker-compose ${COMPOSE_KFK_ALL_FILES} down
+	-@docker-compose ${COMPOSE_KFK_ALL_FILES} down
 
 stop:		## Stop Kafka and all its extra components.
 	@docker-compose ${COMPOSE_KFK_ALL_FILES} stop ${KAFKA_SERVICES}

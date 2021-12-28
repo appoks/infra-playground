@@ -14,15 +14,15 @@ export
 
 all:		    ## Start PostgreSQL and all its component (pgAdmin4 for now).
 	docker-compose ${COMPOSE_PG_ALL_FILES} up -d --build ${PG_SERVICES}
-pg:		    	## Start PostgreSQL.
-	docker-compose up
+postgres:		    	## Start PostgreSQL.
+	docker-compose up -d
 build:			## Build PostgreSQL and all its extra components.
 	@docker-compose ${COMPOSE_PG_ALL_FILES} build ${PG_SERVICES}
 ps:				## Show all running containers.
 	@docker-compose ${COMPOSE_PG_ALL_FILES} ps
 
 down:			## Down PostgreSQL and all its extra components.
-	@docker-compose ${COMPOSE_PG_ALL_FILES} down
+	-@docker-compose ${COMPOSE_PG_ALL_FILES} down
 
 stop:			## Stop PostgreSQL and all its extra components.
 	@docker-compose ${COMPOSE_PG_ALL_FILES} stop ${PG_SERVICES}
