@@ -1,4 +1,0 @@
-x-default-networks: &default-networks
-networks:
-  application:
-    driver: bridge
